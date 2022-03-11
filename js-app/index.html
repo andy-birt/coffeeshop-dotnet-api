@@ -4,7 +4,6 @@
   <title>Coffee Shop</title>
 </head>
 <body>
-  <button id="run-button">Run It!</button>
   <div>
     <h2>Create new Bean</h2>
     <form id="bean-form">
@@ -34,11 +33,19 @@
     <h2>Create new Coffee</h2>
     <form id="coffee-form">
       <div>
+        <input type="hidden" name="Coffee_Id" value="0" />
+      </div>
+      <div>
         <label>Coffee Title</label>
         <input type="text" for="Coffee_Title" />
       </div>
-      <div id="bean-select"></div>
-      <input type="submit" value="Save">
+      <div>
+        <label for="Coffee_BeanVarietyId">Bean Variety</label>
+        <select id="bean-select" for="Coffee_BeanVarietyId">
+          <option value="0">Select a Bean</option>
+        </select>
+      </div>
+      <input id="create-coffee" type="submit" value="Save">
     </form>
   </div>
   <div class="coffees">

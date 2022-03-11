@@ -83,7 +83,7 @@ namespace CoffeeShop.Repositories
                                                bv.[Notes]
                                         FROM Coffee c
                                         LEFT JOIN BeanVariety bv ON c.[BeanVarietyId] = bv.[Id]
-                                        WHERE [Id] = @id";
+                                        WHERE c.[Id] = @id";
 
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -101,7 +101,7 @@ namespace CoffeeShop.Repositories
                             BeanVariety = new BeanVariety()
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Name = reader.GetString(reader.GetOrdinal("BeanName")),
                                 Region = reader.GetString(reader.GetOrdinal("Region")),
                             }
                         };
@@ -147,7 +147,7 @@ namespace CoffeeShop.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"UPDATE Coffee
-                                           SET [Id] = @id, 
+                                           SET 
                                                [Title] = @title,
                                                [BeanVarietyId] = @beanVarietyId 
                                          WHERE [Id] = @id";

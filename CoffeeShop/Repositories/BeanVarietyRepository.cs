@@ -152,7 +152,8 @@ namespace CoffeeShop.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM BeanVariety WHERE Id = @id";
+                    cmd.CommandText = @"DELETE FROM Coffee WHERE BeanVarietyId = @id
+                                        DELETE FROM BeanVariety WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
